@@ -5,7 +5,7 @@ Last Updated For The V1 Update
 
 # Booting Up The Library
 ```lua
-local ProtonSolar = loadstring(game:HttpGet(""), true)()
+local ProtonSolar = loadstring(game:HttpGet("Coming Soon."), true)()
 ```
 
 # Creating An Window
@@ -14,9 +14,10 @@ local Window = ProtonSolar:CreateWindow({
 	WindowName = "Window Name Here",
 	KeySystem = false, --> True: Enabled, False: Disabled.
 	
-	KeySystem_Settings = {
+	KeySettings = {
 		WindowName = "Window Name Here",
-		AccessKey = "" --> Enter Your Key Here.
+		AccessKey = "Access Key Here"
 	}
 })
 ```
+
