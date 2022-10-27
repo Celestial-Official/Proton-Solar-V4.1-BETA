@@ -1,0 +1,265 @@
+--- {Services}>
+local Players_Service = game:GetService("Players");
+local RbxAnalytics_Service = game:GetService("RbxAnalyticsService")
+local REvents_Service = game:GetService("ReplicatedStorage");
+local Market_Service = game:GetService("MarketplaceService");
+local Workspace_Service = game:GetService("Workspace");
+
+--- {Variables}>
+_G.Checked_GamePasses = false
+getgenv().SecureMode = true
+
+--- {Objects}>
+local Current_Player = Players_Service.LocalPlayer
+local UI_Lib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
+local Player_Humanoid = Player_Character:WaitForChild("Humanoid")
+local Workspace_Remotes = Workspace_Service.Remote
+
+--- {Tables}>
+Tables = {
+	["Supported_Games"] = {
+		["Prison_Life"] = {
+			["GameId"] = "155615604",
+			["Supported"] = true,
+
+			--- {GamePasses}>
+			["GamePasses"] = {
+				["Swat"] = {
+					["Id"] = "96651",
+					["Name"] = "Riot police access",
+					["Price"] = "200" --> Robux
+				}
+			}
+		}
+	},
+
+	["ProtonSolar_Datas"] = {
+		["Datas"] = {
+			["Version"] = "4.1",
+			["Key"] = "123_"
+		}
+	}
+}
+
+--- {Functions}>
+local Notification_Function = function(Title, Content, ID)
+	UI_Lib:Notify(
+		Title,
+		Content,
+		ID
+	)
+end
+
+local LoadProtonSolar_Function = function()
+	--- {Objects}>
+	local Main_Window = UI_Lib:CreateWindow({
+		Name = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
+		LoadingTitle = "Welcome To ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
+		LoadingSubtitle = "By Xamenia",
+		Note = "This Gui Is In [BETA].",
+		KeySystem = true,
+
+		--- {Save Settings}>
+		ConfigurationSaving = {
+			Enabled = true,
+			FileName = "ProtonSolar_Config"
+		},
+
+		--- {KeySystem Settings}>
+		KeySettings = {
+			Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] Hub",
+			Subtitle = "Key System",
+			Note = "This Key System Isn't Good Lol.",
+			Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
+		}
+	})
+
+	--- {Tabs}>
+	local MainMenu_Tab = Main_Window:CreateTab("Home")
+	local Client_Tab = Main_Window:CreateTab("Client")
+	local Server_Tab = Main_Window:CreateTab("Server")
+
+	--- {Labels}>
+	local TPLoc_Label = Client_Tab:CreateLabel("TP Locations")
+
+	--- {DropDowns}>
+	local Dropdown_1 = Server_Tab:CreateDropdown({
+		Name = "Guns",
+		Options = {"M9", "AK-47", "Remington 870", "M4A1"},
+		CurrentOption = "None",
+
+		Callback = function(Option)
+			--- {Objects}>
+			local Choosed_Gun = Workspace_Service["Prison_ITEMS"].giver[Option].ITEMPICKUP
+			local Gun_Event = Workspace_Remotes.ItemHandler
+			local Player_Backpack = Current_Player.Backpack	
+
+			--- {Check}>
+			if Player_Backpack:FindFirstChild(Option) then
+				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."], Is Already In Your Inventory.", 7169354142)
+			else
+				if Option == "M4A1" then
+					if _G.Checked_GamePasses then
+						Gun_Event:InvokeServer(Choosed_Gun)
+					else
+						Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Checking GamePass For: [".. Option .."], Please Wait...", 7169354142)
+						task.wait(2.5)
+
+						local Success, Result = pcall(function()
+							return Market_Service:UserOwnsGamePassAsync(Current_Player.UserId, Tables["Supported_Games"]["Prison_Life"]["GamePasses"]["Swat"]["Id"])
+						end)
+
+						if Success then
+							_G.Checked_GamePasses = true
+							Gun_Event:InvokeServer(Choosed_Gun)
+						else
+							Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["Prison_Life"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
+						end
+					end
+				else
+					Gun_Event:InvokeServer(Choosed_Gun)
+				end
+			end
+		end,
+	})
+
+	local Dropdown_2 = Server_Tab:CreateDropdown({
+		Name = "Mod-Guns",
+		Options = {"M9", "AK-47", "Remington 870", "M4A1"},
+		CurrentOption = "None",
+
+		Callback = function(Option)
+			--- {Objects}>
+			local Player_Backpack = Current_Player.Backpack
+
+			-- {Variables}>
+			local Gun_Module = nil
+			local Gun_Moded = nil
+
+			--- {Check}>
+			if Player_Backpack:FindFirstChild(Option) then
+				Gun_Module = require(Player_Backpack[Option].GunStates)
+			elseif Player_Character:FindFirstChild(Option) then
+				Gun_Module = require(Player_Character[Option].GunStates)
+			else
+				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Doesn't Seem To Be Into Your Inventory / Character.", 7169354142)
+			end
+
+			--- {Check Module}>
+			if Gun_Module ~= nil then
+				Gun_Moded = true
+
+				Gun_Module["MaxAmmo"] = math.huge
+				Gun_Module["CurrentAmmo"] = math.huge
+				Gun_Module["StoredAmmo"] = math.huge
+				Gun_Module["FireRate"] = 0.000001
+				Gun_Module["Spread"] = 0
+				Gun_Module["Range"] = math.huge
+				Gun_Module["Bullets"] = 15
+				Gun_Module["ReloadTime"] = 0.000001
+				Gun_Module["AutoFire"] = true
+			elseif Gun_Module ~= nil and Gun_Moded then
+				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Seem To Arleady Be Moded.", 7169354142)
+			end
+		end,
+	})
+
+	local Dropdown_3 = Client_Tab:CreateDropdown({
+		Name = "Locations",
+		Options = {"Criminal Base", "Prison"},
+		CurrentOption = "None",
+
+		Callback = function(Option)
+			if Option ~= "None" then
+				Option = "None"
+				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
+			end
+		end,
+	})
+
+	local Dropdown_3 = Server_Tab:CreateDropdown({
+		Name = "Teams",
+		Options = {"Criminal", "Police", "Prisoner", "Neutral"},
+		CurrentOption = "None",
+
+		Callback = function(Option)
+			if Option == "Criminal" then
+				Workspace_Remotes.TeamEvent:FireServer("Bright red")
+			elseif Option == "Police" then
+				Workspace_Remotes.TeamEvent:FireServer("Bright blue")
+			elseif Option == "Prisoner" then
+				Workspace_Remotes.TeamEvent:FireServer("Bright orange")
+			elseif Option == "Neutral" then
+				Workspace_Remotes.TeamEvent:FireServer("Medium stone grey")
+			end
+		end,
+	})
+
+	--- {Sliders}>
+	local WalkSpeed_Slider = Client_Tab:CreateSlider({
+		Name = "WalkSpeed",
+		Range = {0, 250},
+		Increment = 1,
+		Suffix = "WalkSpeed",
+		CurrentValue = Player_Humanoid.WalkSpeed,
+
+		Callback = function(Value)
+			if Player_Humanoid then
+				Player_Humanoid.WalkSpeed = Value
+			end
+		end,
+	})
+
+	local JumpPower_Slider = Client_Tab:CreateSlider({
+		Name = "JumpPower",
+		Range = {0, 250},
+		Increment = 1,
+		Suffix = "JumpPower",
+		CurrentValue = Player_Humanoid.JumpPower,
+
+		Callback = function(Value)
+			if Player_Humanoid then
+				Player_Humanoid.JumpPower = Value
+			end
+		end,
+	})
+
+	--- {TextBoxs}>
+	local HipHeight = Client_Tab:CreateInput({
+		Name = "HipHeight",
+		PlaceholderText = "Enter The Hip-Height You Want.",
+		RemoveTextAfterFocusLost = false,
+
+		Callback = function(Text)
+			if Player_Humanoid then
+				Player_Humanoid.HipHeight = Text
+			end
+		end,
+	})
+
+	--- {Toggles}>
+	local Toggle = Server_Tab:CreateToggle({
+		Name = "Anti-Taze",
+		CurrentValue = false,
+		Flag = "AntiTaze_Toggle",
+
+		Callback = function(Value)
+			while task.wait(0.05) do
+				if not Value then
+					if Player_Character then
+						Player_Character.ClientInputHandler.Disabled = false
+					end
+				else
+					if Player_Character then
+						Player_Character.ClientInputHandler.Disabled = true
+					end
+				end
+			end
+		end,
+	})
+end
+
+--- {Call Functions}>
+LoadProtonSolar_Function()
+UI_Lib:LoadConfiguration()
