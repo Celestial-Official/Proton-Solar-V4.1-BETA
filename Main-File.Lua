@@ -12,7 +12,7 @@ getgenv().SecureMode = true
 
 --- {Objects}>
 local Current_Player = Players_Service.LocalPlayer
-local UI_Lib = loadstring(game:HttpGet('xxx private ahah!', true))()
+local UI_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/UI_Lib.Lua", true))()
 local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
 local Player_Humanoid = Player_Character:WaitForChild("Humanoid")
 local Workspace_Remotes = Workspace_Service.Remote
