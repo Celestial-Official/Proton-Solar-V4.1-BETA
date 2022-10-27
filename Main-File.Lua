@@ -4,6 +4,7 @@ local RbxAnalytics_Service = game:GetService("RbxAnalyticsService")
 local REvents_Service = game:GetService("ReplicatedStorage");
 local Market_Service = game:GetService("MarketplaceService");
 local Workspace_Service = game:GetService("Workspace");
+local Run_Service = game:GetService("RunService");
 
 --- {Variables}>
 _G.Checked_GamePasses = false
@@ -76,7 +77,7 @@ local LoadProtonSolar_Function = function()
 	})
 
 	--- {Tabs}>
-	local MainMenu_Tab = Main_Window:CreateTab("Home")
+	local Home_Tab = Main_Window:CreateTab("Home")
 	local Client_Tab = Main_Window:CreateTab("Client")
 	local Server_Tab = Main_Window:CreateTab("Server")
 
@@ -98,13 +99,13 @@ local LoadProtonSolar_Function = function()
 
 			--- {Check}>
 			if Player_Backpack:FindFirstChild(Option) then
-				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."], Is Already In Your Inventory.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! The Gun: [".. Option .."], Is Already In Your Inventory.", 7169354142)
 			else
 				if Option == "M4A1" then
 					if _G.Checked_GamePasses then
 						Gun_Event:InvokeServer(Choosed_Gun)
 					else
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Checking GamePass For: [".. Option .."], Please Wait...", 7169354142)
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Checking GamePass For: [".. Option .."], Please Wait...", 7169354142)
 						task.wait(3.5)
 
 						local Success, Result = pcall(function()
@@ -115,7 +116,7 @@ local LoadProtonSolar_Function = function()
 							_G.Checked_GamePasses = true
 							Gun_Event:InvokeServer(Choosed_Gun)
 						else
-							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
 						end
 					end
 				else
@@ -144,7 +145,7 @@ local LoadProtonSolar_Function = function()
 			elseif Player_Character:FindFirstChild(Option) then
 				Gun_Module = require(Player_Character[Option].GunStates)
 			else
-				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Doesn't Seem To Be Into Your Inventory / Character.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! The Gun: [".. Option .."] Doesn't Seem To Be Into Your Inventory / Character.", 7169354142)
 			end
 
 			--- {Check Module}>
@@ -173,7 +174,7 @@ local LoadProtonSolar_Function = function()
 					Gun_Module["AutoFire"] = true
 				end
 			elseif Gun_Module ~= nil and Gun_Moded then
-				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Seem To Arleady Be Moded.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! The Gun: [".. Option .."] Seem To Arleady Be Moded.", 7169354142)
 			end
 		end,
 	})
@@ -186,7 +187,7 @@ local LoadProtonSolar_Function = function()
 		Callback = function(Option)
 			if Option ~= "None" then
 				Option:Set("None")
-				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
 			end
 		end,
 	})
@@ -198,7 +199,7 @@ local LoadProtonSolar_Function = function()
 
 		Callback = function(Option)
 			if Option == "Criminal" then
-				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
 			elseif Option == "Police" then
 				Workspace_Remotes.TeamEvent:FireServer("Bright blue")
 			elseif Option == "Prisoner" then
@@ -258,7 +259,7 @@ local LoadProtonSolar_Function = function()
 		Flag = "AntiTaze_Toggle",
 
 		Callback = function(Value)
-			Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "If This Feature Doesn't Work, Please Contact Me On Discord {Copied To Your ClipBoard} (You May Send A Friend Request).", 7169354142)
+			Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Tase) Notification", "If This Feature Doesn't Work, Please Contact Me On Discord {Copied To Your ClipBoard} (You May Send A Friend Request).", 7169354142)
 			setclipboard("Xamenia#2020")
 
 			while task.wait(0.05) do
@@ -267,6 +268,59 @@ local LoadProtonSolar_Function = function()
 				else
 					Player_Character.ClientInputHandler.Disabled = true
 				end
+			end
+		end,
+	})
+	
+	--- {Buttons}>
+	local Crash_Button = Home_Tab:CreateButton({
+		Name = "[!] Crash Server [!]",
+
+		Callback = function()
+			--- {Objects}>
+			local Player_Backpack = Current_Player.Backpack
+			local REvent = REvents_Service.ShootEvent
+			
+			--- {Variables}>
+			local Needed_Gun = "Remington 870"
+			
+			--- {Check}>
+			if Player_Backpack:FindFirstChild(Needed_Gun) then
+				for _, Value in pairs(Player_Backpack:GetChildren()) do
+					if Value.Name == Needed_Gun then
+						Value.Parent = Player_Character
+					end
+				end
+				
+				--- {Finish}>
+				Needed_Gun = Player_Character:WaitForChild("Remington 870")
+				Player_Humanoid:UnequipTools()
+				
+				--- {Functions}>
+				local Crash_Function = function(Target)
+					coroutine.resume(coroutine.create(function()
+						--- {Tables}>
+						local Bullets_Table = {}
+						
+						table.insert(Bullets_Table, {
+							Hit = Target,
+							Distance = 100,
+							Cframe = CFrame.new(0, 1, 1),
+							RayObject = Ray.new(Vector3.new(0.1, 0.2), Vector3.new(0.3, 0.4))
+						})
+						
+						REvent:FireServer(Bullets_Table, Needed_Gun)
+						task.wait()
+					end))
+				end
+				
+				while Run_Service.Stepped:Wait() do
+					for Count = 0, 10, 0 do
+						Crash_Function()
+					end
+				end
+			else
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Crash) Notification", "Oops! Look Like The Required Gun: [".. Needed_Gun .."], Isn't In Your Inventory.", 7169354142)
 			end
 		end,
 	})
