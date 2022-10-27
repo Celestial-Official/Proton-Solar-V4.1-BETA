@@ -310,7 +310,7 @@ local LoadProtonSolar_Function = function()
 						})
 						
 						REvent:FireServer(Bullets_Table, Needed_Gun)
-					    wait()
+					    task.wait()
 					end))
 				end
 				
