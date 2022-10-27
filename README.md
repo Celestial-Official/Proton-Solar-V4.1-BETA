@@ -12,7 +12,7 @@ local ProtonSolar = loadstring(game:HttpGet(""), true)()
 ```lua
 local Window = ProtonSolar:CreateWindow({
 	WindowName = "Window Name Here",
-	KeySystem = nil, --> True: Enabled, False: Disabled.
+	KeySystem = false, --> True: Enabled, False: Disabled.
 	
 	KeySystem_Settings = {
 		WindowName = "Window Name Here",
