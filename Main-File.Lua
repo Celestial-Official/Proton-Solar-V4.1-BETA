@@ -271,7 +271,7 @@ local LoadProtonSolar_Function = function()
 			end
 		end,
 	})
-	
+
 	--- {Buttons}>
 	local Crash_Button = Home_Tab:CreateButton({
 		Name = "[!] Crash Server [!]",
@@ -280,10 +280,10 @@ local LoadProtonSolar_Function = function()
 			--- {Objects}>
 			local Player_Backpack = Current_Player.Backpack
 			local REvent = REvents_Service.ShootEvent
-			
+
 			--- {Variables}>
 			local Needed_Gun = "Remington 870"
-			
+
 			--- {Check}>
 			if Player_Backpack:FindFirstChild(Needed_Gun) then
 				for _, Value in pairs(Player_Backpack:GetChildren()) do
@@ -291,29 +291,29 @@ local LoadProtonSolar_Function = function()
 						Value.Parent = Player_Character
 					end
 				end
-				
+
 				--- {Finish}>
 				Needed_Gun = Player_Character:WaitForChild("Remington 870")
 				Player_Humanoid:UnequipTools()
-				
+
 				--- {Functions}>
 				local Crash_Function = function(Target)
 					coroutine.resume(coroutine.create(function()
 						--- {Tables}>
 						local Bullets_Table = {}
-						
+
 						table.insert(Bullets_Table, {
 							Hit = Target,
 							Distance = 100,
 							Cframe = CFrame.new(0, 1, 1),
 							RayObject = Ray.new(Vector3.new(0.1, 0.2), Vector3.new(0.3, 0.4))
 						})
-						
+
 						REvent:FireServer(Bullets_Table, Needed_Gun)
-					    task.wait()
+						task.wait()
 					end))
 				end
-				
+
 				while Run_Service.Stepped:Wait() do
 					for Count = 0, 10, 0 do
 						Crash_Function()
