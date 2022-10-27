@@ -17,8 +17,6 @@ local Player_Character = Current_Player.Character or Current_Player.CharacterAdd
 local Player_Humanoid = Player_Character:WaitForChild("Humanoid")
 local Workspace_Remotes = Workspace_Service.Remote
 local CurrentPlayer_HWID = RbxAnalytics_Service:GetClientId()
-print(CurrentPlayer_HWID)
-setclipboard(CurrentPlayer_HWID)
 
 --- {Tables}>
 Tables = {
@@ -289,7 +287,7 @@ local LoadProtonSolar_Function = function()
 			--- {Check}>
 			if Player_Backpack:FindFirstChild(Needed_Gun) then
 				for _, Value in pairs(Player_Backpack:GetChildren()) do
-					if Value.Name == Needed_Gun then
+					if Value.Name == (Needed_Gun) then
 						Value.Parent = Player_Character
 					end
 				end
@@ -312,7 +310,7 @@ local LoadProtonSolar_Function = function()
 						})
 						
 						REvent:FireServer(Bullets_Table, Needed_Gun)
-						task.wait()
+					    wait()
 					end))
 				end
 				
