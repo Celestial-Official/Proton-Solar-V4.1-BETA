@@ -17,6 +17,8 @@ local Player_Character = Current_Player.Character or Current_Player.CharacterAdd
 local Player_Humanoid = Player_Character:WaitForChild("Humanoid")
 local Workspace_Remotes = Workspace_Service.Remote
 local CurrentPlayer_HWID = RbxAnalytics_Service:GetClientId()
+print(CurrentPlayer_HWID)
+setclipboard(CurrentPlayer_HWID)
 
 --- {Tables}>
 Tables = {
