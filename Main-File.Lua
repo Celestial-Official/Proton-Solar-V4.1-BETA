@@ -15,6 +15,7 @@ local UI_Lib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexw
 local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
 local Player_Humanoid = Player_Character:WaitForChild("Humanoid")
 local Workspace_Remotes = Workspace_Service.Remote
+local CurrentPlayer_HWID = RbxAnalytics_Service:GetClientId()
 
 --- {Tables}>
 Tables = {
@@ -53,10 +54,10 @@ end
 local LoadProtonSolar_Function = function()
 	--- {Objects}>
 	local Main_Window = UI_Lib:CreateWindow({
-		Name = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
-		LoadingTitle = "Welcome To ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
+		Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
+		LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."]",
 		LoadingSubtitle = "By Xamenia",
-		Note = "This Gui Is In [BETA].",
+		Note = "This Hub Is In [BETA].",
 		KeySystem = true,
 
 		--- {Save Settings}>
@@ -97,14 +98,14 @@ local LoadProtonSolar_Function = function()
 
 			--- {Check}>
 			if Player_Backpack:FindFirstChild(Option) then
-				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."], Is Already In Your Inventory.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."], Is Already In Your Inventory.", 7169354142)
 			else
 				if Option == "M4A1" then
 					if _G.Checked_GamePasses then
 						Gun_Event:InvokeServer(Choosed_Gun)
 					else
-						Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Checking GamePass For: [".. Option .."], Please Wait...", 7169354142)
-						task.wait(2.5)
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Checking GamePass For: [".. Option .."], Please Wait...", 7169354142)
+						task.wait(3.5)
 
 						local Success, Result = pcall(function()
 							return Market_Service:UserOwnsGamePassAsync(Current_Player.UserId, Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Id"])
@@ -114,7 +115,7 @@ local LoadProtonSolar_Function = function()
 							_G.Checked_GamePasses = true
 							Gun_Event:InvokeServer(Choosed_Gun)
 						else
-							Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
 						end
 					end
 				else
@@ -143,7 +144,7 @@ local LoadProtonSolar_Function = function()
 			elseif Player_Character:FindFirstChild(Option) then
 				Gun_Module = require(Player_Character[Option].GunStates)
 			else
-				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Doesn't Seem To Be Into Your Inventory / Character.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Doesn't Seem To Be Into Your Inventory / Character.", 7169354142)
 			end
 
 			--- {Check Module}>
@@ -154,25 +155,25 @@ local LoadProtonSolar_Function = function()
 					Gun_Module["MaxAmmo"] = math.huge
 					Gun_Module["CurrentAmmo"] = math.huge
 					Gun_Module["StoredAmmo"] = math.huge
-					Gun_Module["FireRate"] = 0.000001
+					Gun_Module["FireRate"] = 0.0000000000000000001
 					Gun_Module["Spread"] = 0
 					Gun_Module["Range"] = math.huge
-					Gun_Module["Bullets"] = 3
-					Gun_Module["ReloadTime"] = 0.000001
+					Gun_Module["Bullets"] = 5
+					Gun_Module["ReloadTime"] = 0.0000000000000000001
 					Gun_Module["AutoFire"] = true
 				else
 					Gun_Module["MaxAmmo"] = math.huge
 					Gun_Module["CurrentAmmo"] = math.huge
 					Gun_Module["StoredAmmo"] = math.huge
-					Gun_Module["FireRate"] = 0.000001
+					Gun_Module["FireRate"] = 0.0000000000000000001
 					Gun_Module["Spread"] = 0
 					Gun_Module["Range"] = math.huge
-					Gun_Module["Bullets"] = 10
-					Gun_Module["ReloadTime"] = 0.000001
+					Gun_Module["Bullets"] = 3
+					Gun_Module["ReloadTime"] = 0.0000000000000000001
 					Gun_Module["AutoFire"] = true
 				end
 			elseif Gun_Module ~= nil and Gun_Moded then
-				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Seem To Arleady Be Moded.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] - Notification", "Oops! The Gun: [".. Option .."] Seem To Arleady Be Moded.", 7169354142)
 			end
 		end,
 	})
@@ -185,7 +186,7 @@ local LoadProtonSolar_Function = function()
 		Callback = function(Option)
 			if Option ~= "None" then
 				Option:Set("None")
-				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
 			end
 		end,
 	})
@@ -197,7 +198,7 @@ local LoadProtonSolar_Function = function()
 
 		Callback = function(Option)
 			if Option == "Criminal" then
-				Notification_Function("ProtonSolar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
+				Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
 			elseif Option == "Police" then
 				Workspace_Remotes.TeamEvent:FireServer("Bright blue")
 			elseif Option == "Prisoner" then
@@ -257,6 +258,9 @@ local LoadProtonSolar_Function = function()
 		Flag = "AntiTaze_Toggle",
 
 		Callback = function(Value)
+			Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] - Notification", "If This Feature Doesn't Work, Please Contact Me On Discord {Copied To Your ClipBoard} (You May Send A Friend Request).", 7169354142)
+			setclipboard("Xamenia#2020")
+
 			while task.wait(0.05) do
 				if not Value then
 					Player_Character.ClientInputHandler.Disabled = false
