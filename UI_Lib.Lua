@@ -1,7 +1,7 @@
 local Release = "Beta 4.1"
 local NotificationDuration = 6.5
 local ConfigurationFolder = "ProtonSolar Interface Suite"
-local ConfigurationExtension = ".rfld"
+local ConfigurationExtension = ".PtrS"
 
 
 
