@@ -1,7 +1,7 @@
 # Proton-Solar Interface Suite
 This Is The Written Documentation For The Proton-Solar Suite
 
-Last Updated For The V1 Update
+Last Updated For The V4.1 | Beta Update
 
 # Booting Up The Library
 ```lua
