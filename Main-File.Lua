@@ -33,7 +33,7 @@ Tables = {
 				}
 			}
 		},
-		
+
 		["369152986"] = {
 			["Supported"] = true
 		}
