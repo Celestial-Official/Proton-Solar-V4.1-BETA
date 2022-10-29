@@ -1,7 +1,8 @@
-local Release = "Beta 4.1"
-local NotificationDuration = 6.5
+local Release = "Version: 4.1 | Beta"
+local NotificationDuration = 4.5
 local ConfigurationFolder = "Rayfield Interface Suite"
 local ConfigurationExtension = ".rfld"
+
 
 
 local RayfieldLibrary = {}
@@ -381,14 +382,17 @@ function RayfieldLibrary:Notify(Title,Content,Image)
 		Notification.Parent = Notifications
 		Notification.Name = Title
 		Notification.Visible = true
-
-		local blurlight = Instance.new("DepthOfFieldEffect",game:GetService("Lighting"))
-		blurlight.Enabled = true
-		blurlight.FarIntensity = 0
-		blurlight.FocusDistance = 51.6
-		blurlight.InFocusRadius = 50
-		blurlight.NearIntensity = 1
-		game:GetService("Debris"):AddItem(script,0)
+		
+		if not getgenv().SecureMode then
+			local blurlight = Instance.new("DepthOfFieldEffect",game:GetService("Lighting"))
+			blurlight.Enabled = true
+			blurlight.FarIntensity = 0
+			blurlight.FocusDistance = 51.6
+			blurlight.InFocusRadius = 50
+			blurlight.NearIntensity = 1
+			game:GetService("Debris"):AddItem(script,0)
+		end
+		
 
 		Notification.Title.Text = Title or "Unknown"
 		Notification.Title.TextTransparency = 1
@@ -1454,6 +1458,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Toggle.Interact.MouseButton1Click:Connect(function()
 				if ToggleSettings.CurrentValue then
 					ToggleSettings.CurrentValue = false
+					ToggleSettings.Callback(ToggleSettings.CurrentValue)
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 
@@ -1469,6 +1474,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()	
 				else
 					ToggleSettings.CurrentValue = true
+					ToggleSettings.Callback(ToggleSettings.CurrentValue)
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -20, 0.5, 0)}):Play()
@@ -1482,13 +1488,14 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()		
 				end
-				ToggleSettings.Callback(ToggleSettings.CurrentValue)
+				
 				SaveConfiguration()
 			end)
 
 			function ToggleSettings:Set(NewToggleValue)
 				if NewToggleValue then
 					ToggleSettings.CurrentValue = true
+					ToggleSettings.Callback(ToggleSettings.CurrentValue)
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -20, 0.5, 0)}):Play()
@@ -1503,6 +1510,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()		
 				else
 					ToggleSettings.CurrentValue = false
+					ToggleSettings.Callback(ToggleSettings.CurrentValue)
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 
