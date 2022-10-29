@@ -82,10 +82,54 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local Home_Tab = Main_Window:CreateTab("Home")
 				local Client_Tab = Main_Window:CreateTab("Client")
 				local Server_Tab = Main_Window:CreateTab("Server")
+				local Updates_Tab = Main_Window:CreateTab("Updates")
 
 				--- {Labels}>
 				local Guns_Label = Server_Tab:CreateLabel("Guns-Giver")
 				local TPLoc_Label = Client_Tab:CreateLabel("TP-Locations")
+
+				---> {Paragraph}
+				local Update_2 = Updates_Tab:CreateParagraph({
+					Title = "Update 2",
+					Content = [[
+						* Fixed Tabs Overflow If There Was Too Many,
+						* Fixed The Notification Blur Problem,
+						* Several Bugs Fixes.
+					]]
+				})
+
+				local Update_3 = Updates_Tab:CreateParagraph({
+					Title = "Update 3",
+					Content = [[
+						* Key System Has Been Created,
+						* Intro / Loading Screen Are Now Fixed And Working,
+						* Several Bugs Fixes And Anhancements.
+					]]
+				})
+
+				local Update_4 = Updates_Tab:CreateParagraph({
+					Title = "Update 4",
+					Content = [[
+						* Configuration System Has Been Created,
+						* Bug Fixes And Enhancements.
+					]]
+				})
+
+				local Update_41 = Updates_Tab:CreateParagraph({
+					Title = "Update 4.1",
+					Content = [[
+						* Introducing Secure Mode,
+						* Secure Mode Is Now Fixed And Undetected.
+					]]
+				})
+
+				local Update_42 = Updates_Tab:CreateParagraph({
+					Title = "Update 4.2",
+					Content = [[
+						* Secure Mode Has Been Fixed,
+						* Toggles Are Now Instant.
+					]]
+				})
 
 				--- {DropDowns}>
 				local Dropdown_1 = Server_Tab:CreateDropdown({
@@ -385,6 +429,50 @@ local LoadProtonSolar_Function = function(Game_ID)
 				--- {Tabs}>
 				local Home_Tab = Main_Window:CreateTab("Home")
 				local Client_Tab = Main_Window:CreateTab("Client")
+				local Updates_Tab = Main_Window:CreateTab("Updates")
+
+				---> {Paragraph}
+				local Update_2 = Updates_Tab:CreateParagraph({
+					Title = "Update 2",
+					Content = [[
+						* Fixed Tabs Overflow If There Was Too Many,
+						* Fixed The Notification Blur Problem,
+						* Several Bugs Fixes.
+					]]
+				})
+
+				local Update_3 = Updates_Tab:CreateParagraph({
+					Title = "Update 3",
+					Content = [[
+						* Key System Has Been Created,
+						* Intro / Loading Screen Is Now Fixed And Working,
+						* Several Bugs Fixes And Anhancements.
+					]]
+				})
+
+				local Update_4 = Updates_Tab:CreateParagraph({
+					Title = "Update 4",
+					Content = [[
+						* Configuration System Has Been Created,
+						* Bug Fixes And Enhancements.
+					]]
+				})
+
+				local Update_41 = Updates_Tab:CreateParagraph({
+					Title = "Update 4.1",
+					Content = [[
+						* Introducing Secure Mode,
+						* Secure Mode Is Now Fixed And Undetected.
+					]]
+				})
+
+				local Update_42 = Updates_Tab:CreateParagraph({
+					Title = "Update 4.2",
+					Content = [[
+						* Secure Mode Has Been Fixed,
+						* Toggles Are Now Instant.
+					]]
+				})
 
 				--- {Sliders}>
 				local WalkSpeed_Slider = Client_Tab:CreateSlider({
