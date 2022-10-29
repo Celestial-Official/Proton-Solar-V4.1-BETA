@@ -169,7 +169,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Gun_Module["FireRate"] = 0.0000000000000000001
 							Gun_Module["Spread"] = 0
 							Gun_Module["Range"] = math.huge
-							Gun_Module["Bullets"] = 5
+							Gun_Module["Bullets"] = 3
 							Gun_Module["ReloadTime"] = 0.0000000000000000001
 							Gun_Module["AutoFire"] = true
 						else
@@ -179,7 +179,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Gun_Module["FireRate"] = 0.0000000000000000001
 							Gun_Module["Spread"] = 0
 							Gun_Module["Range"] = math.huge
-							Gun_Module["Bullets"] = 3
+							Gun_Module["Bullets"] = 5
 							Gun_Module["ReloadTime"] = 0.0000000000000000001
 							Gun_Module["AutoFire"] = true
 						end
