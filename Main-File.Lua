@@ -23,20 +23,8 @@ local CurrentPlayer_HWID = RbxAnalytics_Service:GetClientId()
 --- {Tables}>
 Tables = {
 	["Supported_Games"] = {
-		["155615604"] = {
-			["Supported"] = true,
-
-			--- {GamePasses}>
-			["GamePasses"] = {
-				["Swat"] = {
-					["Id"] = "96651",
-				}
-			}
-		},
-
-		["369152986"] = {
-			["Supported"] = true
-		}
+		["155615604"] = true,
+		["369152986"] = true
 	},
 
 	["ProtonSolar_Datas"] = {
@@ -63,7 +51,7 @@ end
 
 local LoadProtonSolar_Function = function(Game_ID)
 	for _, Table in pairs(Tables["Supported_Games"]) do
-		if tostring(_) == tostring(155615604) then
+		if tostring(_) == tostring(Game_ID) then
 			local Main_Window = UI_Lib:CreateWindow({
 				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
@@ -123,14 +111,14 @@ local LoadProtonSolar_Function = function(Game_ID)
 								task.wait(3.5)
 
 								local Success, Result = pcall(function()
-									return Market_Service:UserOwnsGamePassAsync(Current_Player.UserId, Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Id"])
+									return Market_Service:UserOwnsGamePassAsync(Current_Player.UserId, 96651)
 								end)
 
 								if Success then
 									_G.Checked_GamePasses = true
 									Gun_Event:InvokeServer(Choosed_Gun)
 								else
-									Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! Look Like You Doesn't Own This GamePass: [".. Tables["Supported_Games"]["155615604"]["GamePasses"]["Swat"]["Name"] .."].", 7169354142)
+									Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | Notification", "Oops! Look Like You Doesn't Own This GamePass: [Riot Police Access].", 7169354142)
 								end
 							end
 						else
@@ -365,7 +353,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
 				end,
 			})
-		elseif tostring(_) == tostring(369152986) then
+		elseif tostring(_) == tostring(Game_ID) then
 			local Main_Window = UI_Lib:CreateWindow({
 				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
 				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
