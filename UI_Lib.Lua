@@ -383,8 +383,9 @@ function RayfieldLibrary:Notify(Title,Content,Image)
 		Notification.Name = Title
 		Notification.Visible = true
 		
+		local blurlight = nil
 		if not getgenv().SecureMode then
-			local blurlight = Instance.new("DepthOfFieldEffect",game:GetService("Lighting"))
+			blurlight = Instance.new("DepthOfFieldEffect",game:GetService("Lighting"))
 			blurlight.Enabled = true
 			blurlight.FarIntensity = 0
 			blurlight.FocusDistance = 51.6
@@ -469,9 +470,11 @@ function RayfieldLibrary:Notify(Title,Content,Image)
 			end
 		end
 		wait(1.35)
-		neon:UnbindFrame(Notification.BlurModule)
+		if not getgenv().SecureMode then
+			neon:UnbindFrame(Notification.BlurModule)
+			blurlight:Destroy()
+		end
 		Notification:Destroy()
-		blurlight:Destroy()
 		FigureNotifications()
 	end)
 end
