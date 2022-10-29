@@ -59,13 +59,15 @@ end
 
 local LoadProtonSolar_Function = function(Game_ID)
 	for _, Table in pairs(Tables["Supported_Games"]) do
-		if tostring(_) == tostring(Tables["Supported_Games"][1]) then
+		if tostring(_) == tostring(155615604) then
 			--- {Objects}>
+			local Workspace_Remotes = Workspace_Service.Remote
+
 			local Main_Window = UI_Lib:CreateWindow({
 				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
-				LoadingSubtitle = "By Xamenia#2020",
-				Note = "Join Our Discord: [https://discord.gg/RX9yvseGaw]",
+				LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
+				Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
 				KeySystem = true,
 
 				--- {Save Settings}>
@@ -82,9 +84,6 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})
-
-			--- {Objects[2]}>
-			local Workspace_Remotes = Workspace_Service.Remote
 
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
@@ -169,7 +168,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Gun_Module["FireRate"] = 0.0000000000000000001
 							Gun_Module["Spread"] = 0
 							Gun_Module["Range"] = math.huge
-							Gun_Module["Bullets"] = 3
+							Gun_Module["Bullets"] = 5
 							Gun_Module["ReloadTime"] = 0.0000000000000000001
 							Gun_Module["AutoFire"] = true
 						else
@@ -179,7 +178,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Gun_Module["FireRate"] = 0.0000000000000000001
 							Gun_Module["Spread"] = 0
 							Gun_Module["Range"] = math.huge
-							Gun_Module["Bullets"] = 5
+							Gun_Module["Bullets"] = 3
 							Gun_Module["ReloadTime"] = 0.0000000000000000001
 							Gun_Module["AutoFire"] = true
 						end
@@ -263,7 +262,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 			})
 
 			--- {Toggles}>
-			local Toggle = Server_Tab:CreateToggle({
+			local AntiTaze_Toggle = Server_Tab:CreateToggle({
 				Name = "Anti-Taze",
 				CurrentValue = false,
 				Flag = "AntiTaze_Toggle",
@@ -339,7 +338,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				Name = "Join Lowest Server",
 
 				Callback = function()
-					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
 					task.wait(3.5)
 
 					--- {Functions}>
@@ -357,20 +356,112 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Next = Servers.nextPageCursor
 					until Server
 
-					if not Server then
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "There Was An Error While Teleporting You.", 7169354142)
-					else
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
-						task.wait(0.5)
-						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+					task.wait(0.5)
+					TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+				end,
+			})
+		elseif tostring(_) == tostring(369152986) then
+			local Main_Window = UI_Lib:CreateWindow({
+				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
+				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
+				LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
+				KeySystem = true,
+
+				--- {Save Settings}>
+				ConfigurationSaving = {
+					Enabled = true,
+					FileName = "ProtonSolar_Config"
+				},
+
+				--- {KeySystem Settings}>
+				KeySettings = {
+					Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
+					Subtitle = "Key System",
+					Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
+					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
+				}
+			})
+
+			--- {Tabs}>
+			local Home_Tab = Main_Window:CreateTab("Home")
+			local Client_Tab = Main_Window:CreateTab("Client")
+			
+			--- {Sliders}>
+			local WalkSpeed_Slider = Client_Tab:CreateSlider({
+				Name = "WalkSpeed",
+				Range = {0, 250},
+				Increment = 1,
+				Suffix = "WalkSpeed",
+				CurrentValue = Player_Humanoid.WalkSpeed,
+
+				Callback = function(Value)
+					if Player_Humanoid then
+						Player_Humanoid.WalkSpeed = Value
 					end
+				end,
+			})
+
+			local JumpPower_Slider = Client_Tab:CreateSlider({
+				Name = "JumpPower",
+				Range = {0, 250},
+				Increment = 1,
+				Suffix = "JumpPower",
+				CurrentValue = Player_Humanoid.JumpPower,
+
+				Callback = function(Value)
+					if Player_Humanoid then
+						Player_Humanoid.JumpPower = Value
+					end
+				end,
+			})
+
+			--- {TextBoxs}>
+			local HipHeight = Client_Tab:CreateInput({
+				Name = "HipHeight",
+				PlaceholderText = "Enter The Hip-Height You Want.",
+				RemoveTextAfterFocusLost = false,
+
+				Callback = function(Text)
+					if Player_Humanoid then
+						Player_Humanoid.HipHeight = Text
+					end
+				end,
+			})
+
+			--- {Buttons}>
+			local JoinLowest_Button = Home_Tab:CreateButton({
+				Name = "Join Lowest Server",
+
+				Callback = function()
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
+					task.wait(3.5)
+
+					--- {Functions}>
+					local ListServers_Function = function(Cursor)
+						--- {Variables}>
+						local Raw = game:HttpGet(Tables["Game_Infos"]["Server"].. ((Cursor and "&cursor=".. Cursor) or ""))
+
+						return Http_Service:JSONDecode(Raw)
+					end
+
+					local Server, Next; repeat
+						--- {Variables}>
+						local Servers = ListServers_Function(Next)
+						Server = Servers.data[1]
+						Next = Servers.nextPageCursor
+					until Server
+
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+					task.wait(0.5)
+					TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
 				end,
 			})
 		else
 			local Main_Window = UI_Lib:CreateWindow({
-				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
-				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
-				LoadingSubtitle = "By Xamenia",
+				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-Roleplay",
+				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-Roleplay",
+				LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
 				Note = "This Hub Is In [BETA].",
 				KeySystem = true,
 
@@ -384,7 +475,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				KeySettings = {
 					Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
 					Subtitle = "Key System",
-					Note = "Join Our Discord: [https://discord.gg/RX9yvseGaw]",
+					Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})
@@ -392,7 +483,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
-
+			
 			--- {Sliders}>
 			local WalkSpeed_Slider = Client_Tab:CreateSlider({
 				Name = "WalkSpeed",
@@ -440,7 +531,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				Name = "Join Lowest Server",
 
 				Callback = function()
-					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
 					task.wait(3.5)
 
 					--- {Functions}>
@@ -457,14 +548,10 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Server = Servers.data[1]
 						Next = Servers.nextPageCursor
 					until Server
-					
-					if not Server then
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "There Was An Error While Teleporting You.", 7169354142)
-					else
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
-						task.wait(0.5)
-						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
-					end
+
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+					task.wait(0.5)
+					TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
 				end,
 			})
 		end
