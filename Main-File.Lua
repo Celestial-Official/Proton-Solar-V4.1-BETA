@@ -80,11 +80,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Note = "This Key System Isn't Good Lol.",
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
-			})
-			
-			--- {Objects[2]}>
-			local Workspace_Remotes = Workspace_Service.Remote
-			
+			})			
+
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
@@ -102,6 +99,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 				Callback = function(Option)
 					--- {Objects}>
+					local Workspace_Remotes = Workspace_Service.Remote
 					local Choosed_Gun = Workspace_Service["Prison_ITEMS"].giver[Option].ITEMPICKUP
 					local Gun_Event = Workspace_Remotes.ItemHandler
 					local Player_Backpack = Current_Player.Backpack	
@@ -207,6 +205,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 				CurrentOption = "None",
 
 				Callback = function(Option)
+					--- {Objects}>
+					local Workspace_Remotes = Workspace_Service.Remote
+
 					if Option == "Criminal" then
 						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
 					elseif Option == "Police" then
@@ -386,7 +387,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
-			
+
 			--- {Sliders}>
 			local WalkSpeed_Slider = Client_Tab:CreateSlider({
 				Name = "WalkSpeed",
@@ -483,7 +484,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
-			
+
 			--- {Sliders}>
 			local WalkSpeed_Slider = Client_Tab:CreateSlider({
 				Name = "WalkSpeed",
@@ -525,7 +526,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					end
 				end,
 			})
-			
+
 			--- {Buttons}>
 			local JoinLowest_Button = Home_Tab:CreateButton({
 				Name = "Join Lowest Server",
