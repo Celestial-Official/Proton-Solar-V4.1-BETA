@@ -349,13 +349,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Next = Servers.nextPageCursor
 						until Server
 
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
-						task.wait(0.5)
-						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+						if Server then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+							task.wait(0.5)
+							TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! There Was An Error While Teleporting You.", 7169354142)
+						end
 					end,
 				})
 			elseif Value and Game_ID == Tables["Supported_Games"][2] then
-				print(tostring(Value), tostring(Tables["Supported_Games"][2]))
 				local Main_Window = UI_Lib:CreateWindow({
 					Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
 					LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
@@ -446,13 +449,19 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Next = Servers.nextPageCursor
 						until Server
 
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
-						task.wait(0.5)
-						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+						if Server then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+							task.wait(0.5)
+							TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! There Was An Error While Teleporting You.", 7169354142)
+						end
 					end,
 				})
+			else
+				warn("none")
 			end
-        end
+		end
 	end
 end
 
