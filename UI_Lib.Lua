@@ -1,19 +1,14 @@
-local Release = "Version: 4.1 | Beta"
+local Release = "Version: 4.1 | BETA"
 local NotificationDuration = 4.5
-local ConfigurationFolder = "Rayfield Interface Suite"
+local ConfigurationFolder = "ProtonSolar Interface Suite"
 local ConfigurationExtension = ".rfld"
-
-
-
 local RayfieldLibrary = {}
-
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
-
 local Rayfield = game:GetObjects("rbxassetid://10804731440")[1]
 
 
@@ -44,7 +39,6 @@ else
 	end
 end
 
-
 local Camera = workspace.CurrentCamera
 local Main = Rayfield.Main
 local Topbar = Main.Topbar
@@ -63,7 +57,6 @@ local Debounce = false
 local Flags = {}
 local NotificationStack = {}
 local Notifications = Rayfield.Notifications
-
 
 local function AddDraggingFunctionality(DragPoint, Main)
 	pcall(function()
