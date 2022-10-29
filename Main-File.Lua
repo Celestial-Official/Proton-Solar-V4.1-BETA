@@ -29,7 +29,7 @@ Tables = {
 
 	["ProtonSolar_Datas"] = {
 		["Datas"] = {
-			["Version"] = "4.1",
+			["Version"] = "4.2",
 			["Key"] = "123_"
 		}
 	},
@@ -88,7 +88,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local Guns_Label = Server_Tab:CreateLabel("Guns-Giver")
 				local TPLoc_Label = Client_Tab:CreateLabel("TP-Locations")
 
-				---> {Paragraph}
+				--- {Paragraph}>
 				local Update_2 = Updates_Tab:CreateParagraph({
 					Title = "Update 2",
 					Content = [[
@@ -431,7 +431,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local Client_Tab = Main_Window:CreateTab("Client")
 				local Updates_Tab = Main_Window:CreateTab("Updates")
 
-				---> {Paragraph}
+				--- {Paragraph}>
 				local Update_2 = Updates_Tab:CreateParagraph({
 					Title = "Update 2",
 					Content = [[
