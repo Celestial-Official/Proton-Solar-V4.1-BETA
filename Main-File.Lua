@@ -289,8 +289,10 @@ local LoadProtonSolar_Function = function(Game_ID)
 						--- {Check}>
 						if Player_Backpack:FindFirstChild(Needed_Gun) then
 							for _, Value in pairs(Player_Backpack:GetChildren()) do
-								if Value.Name == (Needed_Gun) then
-									Value.Parent = Player_Character
+								if Value then
+									if Value.Name == (Needed_Gun) then
+										Value.Parent = Player_Character
+									end
 								end
 							end
 
