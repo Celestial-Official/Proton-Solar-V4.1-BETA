@@ -82,7 +82,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})
-			
+
 			--- {Objects[2]}>
 			local Workspace_Remotes = Workspace_Service.Remote
 
@@ -339,7 +339,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				Name = "Join Lowest Server",
 
 				Callback = function()
-					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
 					task.wait(3.5)
 
 					--- {Functions}>
@@ -357,9 +357,13 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Next = Servers.nextPageCursor
 					until Server
 
-					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
-					task.wait(0.5)
-					TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+					if not Server then
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "There Was An Error While Teleporting You.", 7169354142)
+					else
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+						task.wait(0.5)
+						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
+					end
 				end,
 			})
 		else
@@ -388,7 +392,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
-			
+
 			--- {Sliders}>
 			local WalkSpeed_Slider = Client_Tab:CreateSlider({
 				Name = "WalkSpeed",
@@ -427,6 +431,39 @@ local LoadProtonSolar_Function = function(Game_ID)
 				Callback = function(Text)
 					if Player_Humanoid then
 						Player_Humanoid.HipHeight = Text
+					end
+				end,
+			})
+			
+			--- {Buttons}>
+			local JoinLowest_Button = Home_Tab:CreateButton({
+				Name = "Join Lowest Server",
+
+				Callback = function()
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "Joining The Lowest Server, Please Wait...", 7169354142)
+					task.wait(3.5)
+
+					--- {Functions}>
+					local ListServers_Function = function(Cursor)
+						--- {Variables}>
+						local Raw = game:HttpGet(Tables["Game_Infos"]["Server"].. ((Cursor and "&cursor=".. Cursor) or ""))
+
+						return Http_Service:JSONDecode(Raw)
+					end
+
+					local Server, Next; repeat
+						--- {Variables}>
+						local Servers = ListServers_Function(Next)
+						Server = Servers.data[1]
+						Next = Servers.nextPageCursor
+					until Server
+					
+					if not Server then
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "There Was An Error While Teleporting You.", 7169354142)
+					else
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (TP) Notification", "You Are Sccuessfully Being Teleported, Please Wait...", 7169354142)
+						task.wait(0.5)
+						TP_Service:TeleportToPlaceInstance(Tables["Game_Infos"]["Place_Id"], Server.id, Current_Player)
 					end
 				end,
 			})
