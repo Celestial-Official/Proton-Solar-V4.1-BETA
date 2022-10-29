@@ -318,6 +318,28 @@ local LoadProtonSolar_Function = function(Game_ID)
 					end,
 				})
 
+				local AntiOwner_Toggle = UI_Lib:CreateToggle({
+					Name = "Anti-Owner",
+					CurrentValue = false,
+					Flag = "AntiOwner_Toggle",
+
+					Callback = function(Value)
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+
+						while task.wait(0.05) do
+							if Value then
+								for Index, Value in pairs(Players_Service:GetChildren()) do
+									if Value.UserId == game.CreatorId then
+										task.wait(1.5)
+
+										Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+									end
+								end
+							end
+						end
+					end,
+				})
+
 				--- {Buttons}>
 				local Crash_Button = Home_Tab:CreateButton({
 					Name = "[!] Crash Server [!]",
@@ -548,8 +570,29 @@ local LoadProtonSolar_Function = function(Game_ID)
 						end
 					end,
 				})
-			else
-				warn("none")
+
+				--- {Toggles}>
+				local AntiOwner_Toggle = UI_Lib:CreateToggle({
+					Name = "Anti-Owner",
+					CurrentValue = false,
+					Flag = "AntiOwner_Toggle",
+
+					Callback = function(Value)
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+
+						while task.wait(0.05) do
+							if Value then
+								for Index, Value in pairs(Players_Service:GetChildren()) do
+									if Value.UserId == game.CreatorId then
+										task.wait(1.5)
+
+										Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+									end
+								end
+							end
+						end
+					end,
+				})
 			end
 		end
 	end
