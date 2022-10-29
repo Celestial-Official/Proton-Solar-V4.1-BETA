@@ -60,9 +60,6 @@ end
 local LoadProtonSolar_Function = function(Game_ID)
 	for _, Table in pairs(Tables["Supported_Games"]) do
 		if tostring(_) == tostring(155615604) then
-			--- {Objects}>
-			local Workspace_Remotes = Workspace_Service.Remote
-
 			local Main_Window = UI_Lib:CreateWindow({
 				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
@@ -84,7 +81,10 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})
-
+			
+			--- {Objects[2]}>
+			local Workspace_Remotes = Workspace_Service.Remote
+			
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
