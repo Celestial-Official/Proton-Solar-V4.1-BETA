@@ -59,10 +59,8 @@ end
 
 local LoadProtonSolar_Function = function(Game_ID)
 	for _, Table in pairs(Tables["Supported_Games"]) do
-		if tostring(_) == tostring(155615604) then
+		if tostring(_) == tostring(Tables["Supported_Games"][1]) then
 			--- {Objects}>
-			local Workspace_Remotes = Workspace_Service.Remote
-
 			local Main_Window = UI_Lib:CreateWindow({
 				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
@@ -84,6 +82,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})
+			
+			--- {Objects[2]}>
+			local Workspace_Remotes = Workspace_Service.Remote
 
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
@@ -387,6 +388,48 @@ local LoadProtonSolar_Function = function(Game_ID)
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
 			local Client_Tab = Main_Window:CreateTab("Client")
+			
+			--- {Sliders}>
+			local WalkSpeed_Slider = Client_Tab:CreateSlider({
+				Name = "WalkSpeed",
+				Range = {0, 250},
+				Increment = 1,
+				Suffix = "WalkSpeed",
+				CurrentValue = Player_Humanoid.WalkSpeed,
+
+				Callback = function(Value)
+					if Player_Humanoid then
+						Player_Humanoid.WalkSpeed = Value
+					end
+				end,
+			})
+
+			local JumpPower_Slider = Client_Tab:CreateSlider({
+				Name = "JumpPower",
+				Range = {0, 250},
+				Increment = 1,
+				Suffix = "JumpPower",
+				CurrentValue = Player_Humanoid.JumpPower,
+
+				Callback = function(Value)
+					if Player_Humanoid then
+						Player_Humanoid.JumpPower = Value
+					end
+				end,
+			})
+
+			--- {TextBoxs}>
+			local HipHeight = Client_Tab:CreateInput({
+				Name = "HipHeight",
+				PlaceholderText = "Enter The Hip-Height You Want.",
+				RemoveTextAfterFocusLost = false,
+
+				Callback = function(Text)
+					if Player_Humanoid then
+						Player_Humanoid.HipHeight = Text
+					end
+				end,
+			})
 		end
 	end
 end
