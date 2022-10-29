@@ -32,6 +32,10 @@ Tables = {
 					["Id"] = "96651",
 				}
 			}
+		},
+		
+		["369152986"] = {
+			["Supported"] = true
 		}
 	},
 
@@ -81,6 +85,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 				}
 			})			
+
+			--- {Objects[2]}>
+			local Workspace_Remotes = Workspace_Service.Remote
 
 			--- {Tabs}>
 			local Home_Tab = Main_Window:CreateTab("Home")
@@ -193,7 +200,6 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 				Callback = function(Option)
 					if Option ~= "None" then
-						Option:Set("None")
 						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! The Feature You're Using Is Coming Soon.", 7169354142)
 					end
 				end,
@@ -205,9 +211,6 @@ local LoadProtonSolar_Function = function(Game_ID)
 				CurrentOption = "None",
 
 				Callback = function(Option)
-					--- {Objects}>
-					local Workspace_Remotes = Workspace_Service.Remote
-
 					if Option == "Criminal" then
 						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! The Team You Choosed Isn't Avalaible!", 7169354142)
 					elseif Option == "Police" then
@@ -364,8 +367,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 			})
 		elseif tostring(_) == tostring(369152986) then
 			local Main_Window = UI_Lib:CreateWindow({
-				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
-				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
+				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
+				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
 				LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
 				KeySystem = true,
 
@@ -460,8 +463,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 			})
 		else
 			local Main_Window = UI_Lib:CreateWindow({
-				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-Roleplay",
-				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-Roleplay",
+				Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
+				LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Universal",
 				LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
 				Note = "This Hub Is In [BETA].",
 				KeySystem = true,
