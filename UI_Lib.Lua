@@ -1,4 +1,4 @@
-local Release = "Version: 4.1 | BETA"
+local Release = "Version: 4.2 | BETA"
 local NotificationDuration = 4.5
 local ConfigurationFolder = "ProtonSolar Interface Suite"
 local ConfigurationExtension = ".rfld"
@@ -10,7 +10,6 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
 local Rayfield = game:GetObjects("rbxassetid://10804731440")[1]
-
 
 if gethui then
 	Rayfield.Parent = gethui()
@@ -108,7 +107,7 @@ local function LoadConfiguration(Configuration)
 				end    
 			end)
 		else
-			RayfieldLibrary:Notify("Flag Error","Rayfield was unable to find '"..FlagName.. "'' in the current script")
+			RayfieldLibrary:Notify("Flag Error","Proton-Solar Was Unable To Find [".. FlagName .. "] In The Current Script")
 		end
 	end)
 end
@@ -474,7 +473,7 @@ end
 
 function Hide()
 	Debounce = true
-	RayfieldLibrary:Notify("Interface Hidden","The Rayfield interface has been hidden, you can unhide the interface by tapping RightShift")
+	RayfieldLibrary:Notify("Proton-Solar Successfully Hidden","Proton-Solar Has Been Hidden, You Can Unhide The Interface By Tapping RightShift")
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 470, 0, 400)}):Play()
 	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 470, 0, 45)}):Play()
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
