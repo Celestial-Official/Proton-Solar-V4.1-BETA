@@ -289,7 +289,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local HipHeight = Client_Tab:CreateInput({
 					Name = "HipHeight",
 					PlaceholderText = "Enter The Hip-Height You Want.",
-					RemoveTextAfterFocusLost = false,
+					RemoveTextAfterFocusLost = true,
 
 					Callback = function(Text)
 						if Player_Humanoid then
@@ -305,15 +305,20 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Flag = "AntiTaze_Toggle",
 
 					Callback = function(Value)
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Tase) Notification", "If This Feature Doesn't Work, Please Contact Me On Discord {Copied To Your ClipBoard} (You May Send A Friend Request).", 7169354142)
-						setclipboard("Xamenia#2020")
+						if Value then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Tase) Notification", "If This Feature Doesn't Work, Please Contact Me On Discord {Copied To Your ClipBoard} (You May Send A Friend Request).", 7169354142)
+							setclipboard("Xamenia#2020")
 
-						while task.wait(0.05) do
-							if not Value then
-								Player_Character.ClientInputHandler.Disabled = false
-							else
-								Player_Character.ClientInputHandler.Disabled = true
+							while task.wait(0.05) do
+								if not Value then
+									Player_Character.ClientInputHandler.Disabled = false
+								else
+									Player_Character.ClientInputHandler.Disabled = true
+								end
 							end
+						else
+							Player_Character.ClientInputHandler.Disabled = false
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Tase) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
 						end
 					end,
 				})
@@ -324,22 +329,26 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Flag = "AntiOwner_Toggle",
 
 					Callback = function(Value)
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+						if Value then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
 
-						while task.wait(0.5) do
-							--- {Functions}>
-							local OnPlayerJoined_Function = function(Player)
-								if Player.UserId == game.CreatorId then
-									Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "The Owner Has Been Detected, Please Wait...", 7169354142)
-									task.wait(0.5)
+							while task.wait(0.5) do
+								--- {Functions}>
+								local OnPlayerJoined_Function = function(Player)
+									if Player.UserId == game.CreatorId then
+										Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "The Owner Has Been Detected, Please Wait...", 7169354142)
+										task.wait(0.5)
 
-									Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+										Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+									end
+								end
+
+								if Value then
+									Players_Service.PlayerAdded:Connect(OnPlayerJoined_Function)
 								end
 							end
-
-							if Value then
-								Players_Service.PlayerAdded:Connect(OnPlayerJoined_Function)
-							end
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
 						end
 					end,
 				})
@@ -582,22 +591,26 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Flag = "AntiOwner_Toggle",
 
 					Callback = function(Value)
-						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+						if Value then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
 
-						while task.wait(0.5) do
-							--- {Functions}>
-							local OnPlayerJoined_Function = function(Player)
-								if Player.UserId == game.CreatorId then
-									Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "The Owner Has Been Detected, Please Wait...", 7169354142)
-									task.wait(0.5)
+							while task.wait(0.5) do
+								--- {Functions}>
+								local OnPlayerJoined_Function = function(Player)
+									if Player.UserId == game.CreatorId then
+										Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "The Owner Has Been Detected, Please Wait...", 7169354142)
+										task.wait(0.5)
 
-									Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+										Current_Player:Kick("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner)> The Owner Has Joined The Game, We Had To Kick You.")
+									end
+								end
+
+								if Value then
+									Players_Service.PlayerAdded:Connect(OnPlayerJoined_Function)
 								end
 							end
-
-							if Value then
-								Players_Service.PlayerAdded:Connect(OnPlayerJoined_Function)
-							end
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
 						end
 					end,
 				})
