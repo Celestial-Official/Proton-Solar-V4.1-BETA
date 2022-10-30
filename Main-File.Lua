@@ -363,6 +363,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Callback = function(Value)
 						if Value then
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Is Coming Soong.", 7169354142)
+
 							--[[
 								Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
 								task.wait(3.5)
@@ -649,6 +650,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Callback = function(Value)
 						if Value then
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Is Coming Soong.", 7169354142)
+
 							--[[
 								Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
 								task.wait(3.5)
