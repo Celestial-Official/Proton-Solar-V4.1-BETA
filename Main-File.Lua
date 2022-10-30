@@ -647,15 +647,17 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Callback = function(Value)
 						if Value then
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
-							task.wait(2.5)
+							task.wait(3.5)
 
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							task.wait(3.5)
 							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
 						else
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
-							task.wait(2.5)
+							task.wait(3.5)
 
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							task.wait(3.5)
 							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
 						end
 					end,
