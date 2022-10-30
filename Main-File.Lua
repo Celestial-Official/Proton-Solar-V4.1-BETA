@@ -318,7 +318,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					end,
 				})
 
-				local AntiOwner_Toggle = UI_Lib:CreateToggle({
+				local AntiOwner_Toggle = Home_Tab:CreateToggle({
 					Name = "Anti-Owner",
 					CurrentValue = false,
 					Flag = "AntiOwner_Toggle",
@@ -572,7 +572,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				})
 
 				--- {Toggles}>
-				local AntiOwner_Toggle = UI_Lib:CreateToggle({
+				local AntiOwner_Toggle = Home_Tab:CreateToggle({
 					Name = "Anti-Owner",
 					CurrentValue = false,
 					Flag = "AntiOwner_Toggle",
