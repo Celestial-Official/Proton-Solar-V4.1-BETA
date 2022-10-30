@@ -83,6 +83,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local Client_Tab = Main_Window:CreateTab("Client")
 				local Server_Tab = Main_Window:CreateTab("Server")
 				local Updates_Tab = Main_Window:CreateTab("Updates")
+				local Settings_Tab = Main_Window:CreateTab("Settings")
 
 				--- {Labels}>
 				local Guns_Label = Server_Tab:CreateLabel("Guns-Giver")
@@ -353,6 +354,28 @@ local LoadProtonSolar_Function = function(Game_ID)
 					end,
 				})
 
+				local SecureMode_Toggle = Settings_Tab:CreateToggle({
+					Name = "Secure Mode",
+					CurrentValue = false,
+					Flag = "SecureMode_Toggle",
+
+					Callback = function(Value)
+						if Value then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+							task.wait(2.5)
+
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
+							task.wait(2.5)
+
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
+						end
+					end,
+				})
+
 				--- {Buttons}>
 				local Crash_Button = Home_Tab:CreateButton({
 					Name = "[!] Crash Server [!]",
@@ -465,6 +488,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 				local Home_Tab = Main_Window:CreateTab("Home")
 				local Client_Tab = Main_Window:CreateTab("Client")
 				local Updates_Tab = Main_Window:CreateTab("Updates")
+				local Settings_Tab = Main_Window:CreateTab("Settings")
 
 				--- {Paragraph}>
 				local Update_2 = Updates_Tab:CreateParagraph({
@@ -611,6 +635,28 @@ local LoadProtonSolar_Function = function(Game_ID)
 							end
 						else
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Anti-Owner) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
+						end
+					end,
+				})
+
+				local SecureMode_Toggle = Settings_Tab:CreateToggle({
+					Name = "Secure Mode",
+					CurrentValue = false,
+					Flag = "SecureMode_Toggle",
+
+					Callback = function(Value)
+						if Value then
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Enabled.", 7169354142)
+							task.wait(2.5)
+
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
+						else
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "This Feature Has Successfully Been Disabled.", 7169354142)
+							task.wait(2.5)
+
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Secure-Mode) Notification", "Reloading Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "], Please Wait...", 7169354142)
+							loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/Main-File.Lua"), true)()
 						end
 					end,
 				})
