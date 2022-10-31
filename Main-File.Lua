@@ -419,7 +419,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							local Old_UserId = LocalPlayer.UserId
 							local New_UserId = "3587872985"
 
-							LocalPlayer.UserId = New_UserId
+							LocalPlayer.UserId = tonumber(New_UserId)
 						end,
 					})
 					
