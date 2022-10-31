@@ -1,6 +1,6 @@
 local Release = "Version: 5 | BETA"
 local NotificationDuration = 4.5
-local ConfigurationFolder = "ProtonSolar HUB"
+local ConfigurationFolder = "ProtonSolar_Config"
 local ConfigurationExtension = ".rfld"
 
 local RayfieldLibrary = {}
@@ -113,7 +113,7 @@ local function LoadConfiguration(Configuration)
 				end    
 			end)
 		else
-			RayfieldLibrary:Notify("Flag Error","ProtonSolar was unable to find '"..FlagName.. "'' in the current script")
+			RayfieldLibrary:Notify("Flag Error","ProtonSolar Was Unable To Find ["..FlagName.. "] In The Configuration Folder.")
 		end
 	end)
 end
@@ -760,7 +760,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		end
 		
 		if not Settings.KeySettings.FileName then
-			Settings.KeySettings.FileName = "No file name specified"
+			Settings.KeySettings.FileName = "No File Name Specified"
 		end
 
 		if isfile("ProtonSolar Key System".."/"..Settings.KeySettings.FileName..ConfigurationExtension) then
@@ -802,7 +802,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			local KeyMain = KeyUI.Main
 			KeyMain.Title.Text = Settings.KeySettings.Title or Settings.Name
 			KeyMain.Subtitle.Text = Settings.KeySettings.Subtitle or "Key System"
-			KeyMain.NoteMessage.Text = Settings.KeySettings.Note or "No instructions"
+			KeyMain.NoteMessage.Text = Settings.KeySettings.Note or "No Instructions"
 
 			KeyMain.Size = UDim2.new(0, 467, 0, 175)
 			KeyMain.BackgroundTransparency = 1
