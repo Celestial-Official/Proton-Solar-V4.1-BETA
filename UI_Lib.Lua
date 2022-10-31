@@ -1,15 +1,22 @@
+
 local Release = "Version: 5 | BETA"
 local NotificationDuration = 4.5
-local ConfigurationFolder = "ProtonSolar Interface Suite""
+local ConfigurationFolder = "Rayfield Interface Suite"
 local ConfigurationExtension = ".rfld"
+
+
+
 local RayfieldLibrary = {}
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
+
 local Rayfield = game:GetObjects("rbxassetid://10804731440")[1]
+
 
 if gethui then
 	Rayfield.Parent = gethui()
@@ -38,6 +45,7 @@ else
 	end
 end
 
+
 local Camera = workspace.CurrentCamera
 local Main = Rayfield.Main
 local Topbar = Main.Topbar
@@ -56,6 +64,7 @@ local Debounce = false
 local Flags = {}
 local NotificationStack = {}
 local Notifications = Rayfield.Notifications
+
 
 local function AddDraggingFunctionality(DragPoint, Main)
 	pcall(function()
@@ -581,6 +590,7 @@ function Unhide()
 		end
 	end
 	wait(0.5)
+	Minimised = false
 	Debounce = false
 end
 
@@ -1616,19 +1626,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 			function ToggleSettings:Set(NewToggleValue)
 				if NewToggleValue then
 					ToggleSettings.CurrentValue = true
-					local Success, Response = pcall(function()
-						ToggleSettings.Callback(ToggleSettings.CurrentValue)
-					end)
-					if not Success then
-						TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
-						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
-						Toggle.Title.Text = "Callback Error"
-						print("Rayfield | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
-						wait(0.5)
-						Toggle.Title.Text = ToggleSettings.Name
-						TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
-						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
-					end
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 					TweenService:Create(Toggle.Switch.Indicator, TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, -20, 0.5, 0)}):Play()
@@ -1643,19 +1640,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()		
 				else
 					ToggleSettings.CurrentValue = false
-					local Success, Response = pcall(function()
-						ToggleSettings.Callback(ToggleSettings.CurrentValue)
-					end)
-					if not Success then
-						TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(85, 0, 0)}):Play()
-						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
-						Toggle.Title.Text = "Callback Error"
-						print("Rayfield | "..ToggleSettings.Name.." Callback Error " ..tostring(Response))
-						wait(0.5)
-						Toggle.Title.Text = ToggleSettings.Name
-						TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
-						TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
-					end
 					TweenService:Create(Toggle, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(45, 45, 45)}):Play()
 					TweenService:Create(Toggle.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 1}):Play()
 
@@ -1697,7 +1681,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 		-- Slider
 		function Tab:CreateSlider(SliderSettings)
-
+			local Dragging = false
 			local Slider = Elements.Template.Slider:Clone()
 			Slider.Name = SliderSettings.Name
 			Slider.Title.Text = SliderSettings.Name
@@ -1728,13 +1712,24 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Slider.MouseLeave:Connect(function()
 				TweenService:Create(Slider, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = Color3.fromRGB(35, 35, 35)}):Play()
 			end)
+			
+			Slider.Main.Interact.InputBegan:Connect(function(Input)
+				if Input.UserInputType == Enum.UserInputType.MouseButton1 then 
+					Dragging = true 
+				end 
+			end)
+			Slider.Main.Interact.InputEnded:Connect(function(Input) 
+				if Input.UserInputType == Enum.UserInputType.MouseButton1 then 
+					Dragging = false 
+				end 
+			end)
 
 			Slider.Main.Interact.MouseButton1Down:Connect(function(X)
 				local Current = Slider.Main.Progress.AbsolutePosition.X + Slider.Main.Progress.AbsoluteSize.X
 				local Start = Current
 				local Location = X
 				local Loop; Loop = RunService.Stepped:Connect(function()
-					if UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
+					if Dragging then
 						Location = UserInputService:GetMouseLocation().X
 						Current = Current + 0.025 * (Location - Start)
 
