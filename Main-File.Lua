@@ -415,11 +415,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 						Callback = function()
 							--- {Objects}>
-							local LocalPlayer = Current_Player.Name
 							local Old_UserId = LocalPlayer.UserId
-							local New_UserId = "3587872985"
 
-							LocalPlayer.UserId = tonumber(New_UserId)
+							Current_Player.UserId = 3587872985
 						end,
 					})
 					
@@ -658,11 +656,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 						Callback = function()
 							--- {Objects}>
-							local LocalPlayer = Current_Player.Name
 							local Old_UserId = LocalPlayer.UserId
-							local New_UserId = "3587872985"
 
-							LocalPlayer.UserId = New_UserId
+							Current_Player.UserId = 3587872985
 						end,
 					})
 					
