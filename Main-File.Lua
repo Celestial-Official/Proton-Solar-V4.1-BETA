@@ -418,7 +418,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 								--- {Objects}>
 								local Old_UserId = Current_Player.UserId
 
-								Current_Player.UserId = 3587872985
+								Current_Player.UserId = "3587872985é
 							end
 						end,
 					})
@@ -661,7 +661,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 								--- {Objects}>
 								local Old_UserId = Current_Player.UserId
 
-								Current_Player.UserId = 3587872985
+								Current_Player.UserId = "3587872985"
 							end
 						end,
 					})
