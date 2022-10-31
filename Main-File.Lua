@@ -414,10 +414,12 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							--- {Objects}>
-							local Old_UserId = LocalPlayer.UserId
+							if not Current_Player.UserId == 3587872985 then
+								--- {Objects}>
+								local Old_UserId = Current_Player.UserId
 
-							Current_Player.UserId = 3587872985
+								Current_Player.UserId = 3587872985
+							end
 						end,
 					})
 					
@@ -655,10 +657,12 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							--- {Objects}>
-							local Old_UserId = LocalPlayer.UserId
+							if not Current_Player.UserId == 3587872985 then
+								--- {Objects}>
+								local Old_UserId = Current_Player.UserId
 
-							Current_Player.UserId = 3587872985
+								Current_Player.UserId = 3587872985
+							end
 						end,
 					})
 					
