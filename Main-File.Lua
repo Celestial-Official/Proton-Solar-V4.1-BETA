@@ -1,6 +1,6 @@
 --- {Services}>
 local Players_Service = game:GetService("Players");
-local RbxAnalytics_Service = game:GetService("RbxAnalyticsService")
+local RbxAnalytics_Service = game:GetService("RbxAnalyticsService");
 local REvents_Service = game:GetService("ReplicatedStorage");
 local Market_Service = game:GetService("MarketplaceService");
 local Workspace_Service = game:GetService("Workspace");
@@ -466,6 +466,17 @@ local LoadProtonSolar_Function = function(Game_ID)
 						end
 					end,
 				})
+				
+				local LoadXS_Button = Home_Tab:CreateButton({
+					Name = "[!] Load Prison-Life Admin [!]",
+
+					Callback = function()
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Loading The Script, Please Wait...", 7169354142)
+						task.wait(3.5)
+
+						loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/PrisonLife_Admin.Lua"), true)()
+					end,
+				})
 			elseif Value and Game_ID == Tables["Supported_Games"][2] then
 				local Main_Window = UI_Lib:CreateWindow({
 					Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Bully-RolePlay",
@@ -609,6 +620,17 @@ local LoadProtonSolar_Function = function(Game_ID)
 						else
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! There Was An Error While Teleporting You.", 7169354142)
 						end
+					end,
+				})
+
+				local LoadXS_Button = Home_Tab:CreateButton({
+					Name = "[!] Load Prison-Life Admin [!]",
+
+					Callback = function()
+						Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Loading The Script, Please Wait...", 7169354142)
+						task.wait(3.5)
+
+						loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/PrisonLife_Admin.Lua"), true)()
 					end,
 				})
 
