@@ -14,6 +14,7 @@ getgenv().SecureMode = true
 local Roblox_API = "https://games.roblox.com/v1/games/"
 
 --- {Objects}>
+local Current_Executor = identifyexecutor()
 local Current_Player = Players_Service.LocalPlayer
 local UI_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/UI_Lib.Lua", true))()
 local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
@@ -29,9 +30,16 @@ Tables = {
 
 	["ProtonSolar_Datas"] = {
 		["Datas"] = {
-			["Version"] = "4.2",
+			["Version"] = "5",
 			["Key"] = "123_",
-			["Down"] = true
+			["Down"] = false,
+			["Executor"] = tostring(Current_Executor)
+		},
+		
+		["Supported_Executors"] = {
+			[1] = "Evon",
+			[2] = "Krnl",
+			[3] = "JJSploit"
 		}
 	},
 
@@ -67,7 +75,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 						--- {Save Settings}>
 						ConfigurationSaving = {
 							Enabled = true,
-							FileName = "ProtonSolar_Config"
+							FolderName = "ProtonSolar_Config",
+							FileName = "Saved_Datas"
 						},
 
 						--- {KeySystem Settings}>
@@ -75,6 +84,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
 							Subtitle = "Key System",
 							Note = "This Key System Isn't Good Lol.",
+							SaveKey = true,
 							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
 						}
 					})			
@@ -133,6 +143,15 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Content = [[
 						* Secure Mode Has Been Fixed,
 						* Toggles Are Now Instant.
+					]]
+					})
+
+					local Update_5 = Updates_Tab:CreateParagraph({
+						Title = "Update 5",
+						Content = [[
+						* Tabs Now Support Icons,
+						* Built-In Error Handler.
+						* Bug Fixes And Enhancements.
 					]]
 					})
 
@@ -489,8 +508,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 						--- {Save Settings}>
 						ConfigurationSaving = {
-							Enabled = true,
-							FileName = "ProtonSolar_Config"
+							FolderName = "ProtonSolar_Config",
+							FileName = "Saved_Datas",
+							Enabled = true
 						},
 
 						--- {KeySystem Settings}>
@@ -498,7 +518,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
 							Subtitle = "Key System",
 							Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
-							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
+							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"],
+							SaveKey = true
 						}
 					})
 
@@ -548,6 +569,15 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Content = [[
 						* Secure Mode Has Been Fixed,
 						* Toggles Are Now Instant.
+					]]
+					})
+
+					local Update_5 = Updates_Tab:CreateParagraph({
+						Title = "Update 5",
+						Content = [[
+						* Tabs Now Support Icons,
+						* Built-In Error Handler.
+						* Bug Fixes And Enhancements.
 					]]
 					})
 
@@ -698,8 +728,6 @@ local LoadProtonSolar_Function = function(Game_ID)
 	end
 end
 
-
 --- {Call Functions}>
 LoadProtonSolar_Function(game.PlaceId)
 UI_Lib:LoadConfiguration()
-
