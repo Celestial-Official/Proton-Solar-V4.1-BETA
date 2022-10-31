@@ -304,6 +304,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Name = "Anti-Taze",
 					CurrentValue = false,
 					Flag = "AntiTaze_Toggle",
+					Save = true,
 
 					Callback = function(Value)
 						if Value then
@@ -328,6 +329,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Name = "Anti-Owner",
 					CurrentValue = false,
 					Flag = "AntiOwner_Toggle",
+					Save = true,
 
 					Callback = function(Value)
 						if Value then
@@ -615,6 +617,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					Name = "Anti-Owner",
 					CurrentValue = false,
 					Flag = "AntiOwner_Toggle",
+					Save = true,
 
 					Callback = function(Value)
 						if Value then
