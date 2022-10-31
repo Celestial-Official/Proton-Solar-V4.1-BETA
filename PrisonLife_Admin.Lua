@@ -69,7 +69,7 @@ local Datas = {
 local OnNewMessage_Function = function(Message)
 	if Message == Datas["Commands"][1] then
 		--- {Objects}>
-		local SubCommand = Message:sub(11, 12)
+		local SubCommand = Message:sub(10, 11)
 
 		if SubCommand == "Apis" then
 			for _, Data in (Datas["Roblox_Apis"]) do
