@@ -14,7 +14,6 @@ getgenv().SecureMode = true
 local Roblox_API = "https://games.roblox.com/v1/games/"
 
 --- {Objects}>
-local Current_Executor = identifyexecutor()
 local Current_Player = Players_Service.LocalPlayer
 local UI_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/UI_Lib.Lua", true))()
 local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
@@ -32,20 +31,13 @@ Tables = {
 		["Datas"] = {
 			["Version"] = "5",
 			["Key"] = "123_",
-			["Down"] = false,
-			["Executor"] = tostring(Current_Executor)
-		},
-		
-		["Supported_Executors"] = {
-			[1] = "Evon",
-			[2] = "Krnl",
-			[3] = "JJSploit"
+			["Down"] = false
 		}
 	},
 
 	["Game_Infos"] = {
 		["Place_Id"] = tostring(game.PlaceId),
-		["Server"] = tostring(Roblox_API.. game.PlaceId .."/servers/Public?sortOrder=Asc&limit=100")
+		["Server"] = tostring(Roblox_API.. game.PlaceId .."/Updatess/Public?sortOrder=Asc&limit=100")
 	}
 }
 
@@ -93,11 +85,11 @@ local LoadProtonSolar_Function = function(Game_ID)
 					local Workspace_Remotes = Workspace_Service.Remote
 
 					--- {Tabs}>
-					local Home_Tab = Main_Window:CreateTab("Home")
-					local Client_Tab = Main_Window:CreateTab("Client")
-					local Server_Tab = Main_Window:CreateTab("Server")
-					local Updates_Tab = Main_Window:CreateTab("Updates")
-					local Settings_Tab = Main_Window:CreateTab("Settings")
+					local Home_Tab = Main_Window:CreateTab("Home", 4034483344)
+					local Client_Tab = Main_Window:CreateTab("Client", 470645116)
+					local Server_Tab = Main_Window:CreateTab("Server", 9432858523)
+					local Updates_Tab = Main_Window:CreateTab("Updates", 7546954294)
+					local Settings_Tab = Main_Window:CreateTab("Settings", 7059346373)
 
 					--- {Labels}>
 					local Guns_Label = Server_Tab:CreateLabel("Guns-Giver")
@@ -524,10 +516,10 @@ local LoadProtonSolar_Function = function(Game_ID)
 					})
 
 					--- {Tabs}>
-					local Home_Tab = Main_Window:CreateTab("Home")
-					local Client_Tab = Main_Window:CreateTab("Client")
-					local Updates_Tab = Main_Window:CreateTab("Updates")
-					local Settings_Tab = Main_Window:CreateTab("Settings")
+					local Home_Tab = Main_Window:CreateTab("Home", 4034483344)
+					local Client_Tab = Main_Window:CreateTab("Client", 470645116)
+					local Updates_Tab = Main_Window:CreateTab("Updates", 7546954294)
+					local Settings_Tab = Main_Window:CreateTab("Settings", 7059346373)
 
 					--- {Paragraph}>
 					local Update_2 = Updates_Tab:CreateParagraph({
@@ -728,6 +720,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 	end
 end
 
+
 --- {Call Functions}>
 LoadProtonSolar_Function(game.PlaceId)
 UI_Lib:LoadConfiguration()
+
