@@ -84,7 +84,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 					--- {Debug}>
 					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | (Debug) Notification", "Please Ignore This, Current Executor: [".. tostring(Current_Executor) .."].", 7169354142)
-				
+
 					--- {Objects[2]}>
 					local Workspace_Remotes = Workspace_Service.Remote
 
@@ -150,7 +150,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						* Bug Fixes And Enhancements.
 					]]
 					})
-					
+
 					local Update_51 = Updates_Tab:CreateParagraph({
 						Title = "Update 5.1",
 						Content = [[
@@ -414,7 +414,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							if not Current_Player.UserId == 3587872985 then
+							if Current_Player.UserId ~= 3587872985 then
 								--- {Objects}>
 								local Old_UserId = Current_Player.UserId
 
@@ -422,7 +422,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							end
 						end,
 					})
-					
+
 					local Crash_Button = Home_Tab:CreateButton({
 						Name = "[!] Crash Server [!]",
 
@@ -460,7 +460,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 											RayObject = Ray.new(Vector3.new(0.1, 0.2), Vector3.new(0.3, 0.4))
 										})
 
-										REvent:FireServer(Bullets_Table, Required_Gun)
+										REvent:FireServer(NewBullets_Table, Required_Gun)
 										task.wait()
 									end))
 								end
@@ -545,6 +545,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					--- {Tabs}>
 					local Home_Tab = Main_Window:CreateTab("Home", 4034483344)
 					local Client_Tab = Main_Window:CreateTab("Client", 470645116)
+					local Server_Tab = Main_Window:CreateTab("Server", 9432858523)
 					local Updates_Tab = Main_Window:CreateTab("Updates", 7546954294)
 					local Settings_Tab = Main_Window:CreateTab("Settings", 7059346373)
 
@@ -599,7 +600,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						* Bug Fixes And Enhancements.
 					]]
 					})
-					
+
 					local Update_51 = Updates_Tab:CreateParagraph({
 						Title = "Update 5.1",
 						Content = [[
@@ -657,7 +658,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							if not Current_Player.UserId == 3587872985 then
+							if Current_Player.UserId ~= 3587872985 then
 								--- {Objects}>
 								local Old_UserId = Current_Player.UserId
 
@@ -665,7 +666,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							end
 						end,
 					})
-					
+
 					local JoinLowest_Button = Home_Tab:CreateButton({
 						Name = "Join Lowest Server",
 
