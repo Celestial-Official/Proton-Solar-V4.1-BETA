@@ -663,6 +663,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 							local New_UserId = "3587872985"
 
 							LocalPlayer.UserId = New_UserId
+						end,
 					})
 					
 					local JoinLowest_Button = Home_Tab:CreateButton({
