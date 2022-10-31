@@ -239,7 +239,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 					end,
 				})
 
-				local Dropdown_3 = Server_Tab:CreateDropdown({
+				local Dropdown_4 = Server_Tab:CreateDropdown({
 					Name = "Teams",
 					Options = {"Criminal", "Police", "Prisoner", "Neutral"},
 					CurrentOption = "None",
@@ -386,24 +386,23 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 					Callback = function()
 						--- {Objects}>
+						local LocalPlayer = Current_Player.Name
 						local Player_Backpack = Current_Player.Backpack
 						local REvent = REvents_Service.ShootEvent
 
 						--- {Variables}>
-						local Needed_Gun = "Remington 870"
+						local Required_Gun = "Remington 870"
 
 						--- {Check}>
-						if Player_Backpack:FindFirstChild(Needed_Gun) then
-							for _, Value in pairs(Player_Backpack:GetChildren()) do
-								if Value then
-									if Value.Name == (Needed_Gun) then
-										Value.Parent = Player_Character
-									end
+						if Player_Backpack:FindFirstChild(Required_Gun) then
+							for Index, Value in pairs(Players_Service[LocalPlayer].Backpack:GetChildren()) do
+								if Value.Name == (Required_Gun) then
+									Value.Parent = Player_Character
 								end
 							end
 
 							--- {Finish}>
-							Needed_Gun = Player_Character:WaitForChild("Remington 870")
+							Required_Gun = Players_Service[LocalPlayer].Character[Required_Gun]
 							Player_Humanoid:UnequipTools()
 
 							--- {Functions}>
@@ -419,8 +418,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 										RayObject = Ray.new(Vector3.new(0.1, 0.2), Vector3.new(0.3, 0.4))
 									})
 
-									REvent:FireServer(Bullets_Table, Needed_Gun)
-									task.wait()
+									REvent:FireServer(Bullets_Table, Required_Gun)
+									wait()
 								end))
 							end
 
@@ -430,7 +429,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 								end
 							end
 						else
-							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Crash) Notification", "Oops! Look Like The Required Gun: [".. Needed_Gun .."], Isn't In Your Inventory.", 7169354142)
+							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | (Crash) Notification", "Oops! Look Like The Required Gun: [".. Required_Gun .."], Isn't In Your Inventory.", 7169354142)
 						end
 					end,
 				})
@@ -466,7 +465,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						end
 					end,
 				})
-				
+
 				local LoadXS_Button = Home_Tab:CreateButton({
 					Name = "[!] Load Prison-Life Admin [!]",
 
