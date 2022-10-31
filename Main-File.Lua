@@ -410,6 +410,18 @@ local LoadProtonSolar_Function = function(Game_ID)
 					})
 
 					--- {Buttons}>
+					local Free_Gamepasses = Server_Tab:CreateButton({
+						Name = "Free GamePasses",
+
+						Callback = function()
+							--- {Objects}>
+							local LocalPlayer = Current_Player.Name
+							local Old_UserId = LocalPlayer.UserId
+							local New_UserId = "3587872985"
+
+							LocalPlayer.UserId = New_UserId
+					})
+					
 					local Crash_Button = Home_Tab:CreateButton({
 						Name = "[!] Crash Server [!]",
 
@@ -640,6 +652,18 @@ local LoadProtonSolar_Function = function(Game_ID)
 					})
 
 					--- {Buttons}>
+					local Free_Gamepasses = Server_Tab:CreateButton({
+						Name = "Free GamePasses",
+
+						Callback = function()
+							--- {Objects}>
+							local LocalPlayer = Current_Player.Name
+							local Old_UserId = LocalPlayer.UserId
+							local New_UserId = "3587872985"
+
+							LocalPlayer.UserId = New_UserId
+					})
+					
 					local JoinLowest_Button = Home_Tab:CreateButton({
 						Name = "Join Lowest Server",
 
