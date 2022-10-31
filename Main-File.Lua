@@ -14,6 +14,7 @@ getgenv().SecureMode = true
 local Roblox_API = "https://games.roblox.com/v1/games/"
 
 --- {Objects}>
+local Current_Executor = identifyexecutor()
 local Current_Player = Players_Service.LocalPlayer
 local UI_Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Xamenia-OfficialHD/Proton-Solar-V4.1-BETA/main/UI_Lib.Lua"), true)()
 local Player_Character = Current_Player.Character or Current_Player.CharacterAdded:Wait()
@@ -81,6 +82,9 @@ local LoadProtonSolar_Function = function(Game_ID)
 						}
 					})			
 
+					--- {Debug}>
+					Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .. "] | (Debug) Notification", "Please Ignore This, Current Executor: [".. tostring(Current_Executor) .."].", 7169354142)
+				
 					--- {Objects[2]}>
 					local Workspace_Remotes = Workspace_Service.Remote
 
