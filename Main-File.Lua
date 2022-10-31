@@ -150,6 +150,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						* Bug Fixes And Enhancements.
 					]]
 					})
+					
+					local Update_51 = Updates_Tab:CreateParagraph({
+						Title = "Update 5.1",
+						Content = [[
+						* Toggles Now Support Loops,
+						* Sliders Has Been Fixed,
+						* Tabs Has Been Fixed
+						* Bug Fixes And Enhancements.
+					]]
+					})
 
 					--- {DropDowns}>
 					local Dropdown_1 = Server_Tab:CreateDropdown({
@@ -414,23 +424,23 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 							--- {Check}>
 							if Player_Backpack:FindFirstChild(Required_Gun) then
-								for Index, Value in pairs(Players_Service[LocalPlayer].Backpack:GetChildren()) do
-									if Value.Name == (Required_Gun) then
+								for Index, Value in pairs(Player_Backpack:GetChildren()) do
+									if Value.Name == Required_Gun then
 										Value.Parent = Player_Character
 									end
 								end
 
 								--- {Finish}>
-								Required_Gun = Players_Service[LocalPlayer].Character[Required_Gun]
+								Required_Gun = Player_Character[Required_Gun]
 								Player_Humanoid:UnequipTools()
 
 								--- {Functions}>
 								local Crash_Function = function(Target)
 									coroutine.resume(coroutine.create(function()
 										--- {Tables}>
-										local Bullets_Table = {}
+										local NewBullets_Table = {}
 
-										table.insert(Bullets_Table, {
+										table.insert(NewBullets_Table, {
 											Hit = Target,
 											Distance = 100,
 											Cframe = CFrame.new(0, 1, 1),
@@ -438,12 +448,12 @@ local LoadProtonSolar_Function = function(Game_ID)
 										})
 
 										REvent:FireServer(Bullets_Table, Required_Gun)
-										wait()
+										task.wait()
 									end))
 								end
 
 								while Run_Service.Stepped:Wait() do
-									for Count = 0, 10, 0 do
+									for Number = 0, 10, 0 do
 										Crash_Function()
 									end
 								end
@@ -573,6 +583,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Content = [[
 						* Tabs Now Support Icons,
 						* Built-In Error Handler.
+						* Bug Fixes And Enhancements.
+					]]
+					})
+					
+					local Update_51 = Updates_Tab:CreateParagraph({
+						Title = "Update 5.1",
+						Content = [[
+						* Toggles Now Support Loops,
+						* Sliders Has Been Fixed,
+						* Tabs Has Been Fixed
 						* Bug Fixes And Enhancements.
 					]]
 					})
