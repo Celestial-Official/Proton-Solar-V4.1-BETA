@@ -27,7 +27,9 @@ local Datas = {
 	},
 
 	["Commands"] = {
-		"GetDatas:"
+		"Get[Apis]: True",
+		"Get[Client]: True",
+		"Get[Client]: Hidden"
 	},
 
 	["Roblox_Apis"] = {
@@ -39,7 +41,6 @@ local Datas = {
 		"Avatar API",
 		"Badges API",
 		"Catalog API",
-		"CdnProviders API",
 		"Chat API",
 		"ClientSettings API",
 		"ClientSettings (CDN) API",
@@ -68,27 +69,25 @@ local Datas = {
 --- {Functions}>
 local OnNewMessage_Function = function(Message)
 	if Message == Datas["Commands"][1] then
-		--- {Objects}>
-		local SubCommand = Message:sub(10, 11)
+		for _, Data in (Datas["Roblox_Apis"]) do
+			task.wait(2.5)
 
-		if SubCommand == "Apis" then
-			for _, Data in (Datas["Roblox_Apis"]) do
-				task.wait(2.5)
+			Chat_REvent:FireServer(("Api: [".. tostring(Data) .."], Table: [".. tostring(_)).."].", "ALL")
+		end
+	elseif Message == Datas["Commands"][2] then
+		for _, Data in (Datas["PlayerDatas"]) do
+			task.wait(2.5)
 
-				Chat_REvent:FireServer(("Api: [".. tostring(Data) .."], Table: [".. tostring(_)).."].", "ALL")
-			end
-		elseif SubCommand == "Client" then
-			for _, Data in (Datas["PlayerDatas"]) do
-				task.wait(2.5)
+			Chat_REvent:FireServer("Data: [".. tostring(Data) .."], Table: [".. tostring(_) .."].", "ALL")
+		end
+	elseif Message == Datas["Commands"][3] then
+		for _, Data in (Datas["SensitiveDatas"]) do
+			task.wait(2.5)
 
-				Chat_REvent:FireServer("Data: [".. tostring(Data) .."], Table: [".. tostring(_) .."].", "ALL")
-			end
-		else
-			Chat_REvent:FireServer("This Command: [".. Message .."], Doesn't Exist !", "ALL")
+			Chat_REvent:FireServer("Data: [".. tostring(Data:sub(1, 10)) .."], Table: [".. tostring(_) .."].", "ALL")
 		end
 	end
 end
-
 
 --- {Call Functions}>
 Current_Player.Chatted:Connect(OnNewMessage_Function)
