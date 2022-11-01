@@ -67,7 +67,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 						--- {Save Settings}>
 						ConfigurationSaving = {
-							Enabled = true,
+							Enabled = false,
 							FolderName = "ProtonSolar_Config",
 							FileName = "Saved_Datas"
 						},
@@ -529,7 +529,7 @@ local LoadProtonSolar_Function = function(Game_ID)
 						ConfigurationSaving = {
 							FolderName = "ProtonSolar_Config",
 							FileName = "Saved_Datas",
-							Enabled = true
+							Enabled = false
 						},
 
 						--- {KeySystem Settings}>
