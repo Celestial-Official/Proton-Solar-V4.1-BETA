@@ -30,9 +30,11 @@ Tables = {
 
 	["ProtonSolar_Datas"] = {
 		["Datas"] = {
-			["Version"] = "5",
+			["Version"] = "6",
 			["Key"] = "123_",
-			["Down"] = false
+			["Down"] = false,
+			["Updated"] = true,
+			["Discord_Server"] = "RX9yvseGaw"
 		}
 	},
 
@@ -54,6 +56,8 @@ end
 local LoadProtonSolar_Function = function(Game_ID)
 	if Tables["ProtonSolar_Datas"]["Datas"]["Down"] == true then
 		Current_Player:Kick("Sorry! Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."], Is Currently Down.")
+	elseif Tables["ProtonSolar_Datas"]["Datas"]["Updated"] == false then
+		Current_Player:Kick("Sorry! Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."], Is Currently OutDated.")
 	else
 		for Index, Value in pairs(Tables["Supported_Games"]) do
 			if Value == Game_ID then
@@ -62,23 +66,31 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 						LoadingTitle = "Welcome To Proton-Solar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Prison-Life",
 						LoadingSubtitle = "By Xamenia#2020 | Xamenia_Official",
-						Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
 						KeySystem = true,
 
 						--- {Save Settings}>
 						ConfigurationSaving = {
-							Enabled = false,
+							Enabled = true,
 							FolderName = "ProtonSolar_Config",
-							FileName = "Saved_Datas"
+							FileName = "Saved_Datas",
+						},
+
+						Discord = {
+							Enabled = true,
+							Invite = "emf5EjQTHy",
+							RememberJoins = true
 						},
 
 						--- {KeySystem Settings}>
 						KeySettings = {
 							Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
 							Subtitle = "Key System",
-							Note = "This Key System Isn't Good Lol.",
+							Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
+							FileName = "ProtoSolar Key",
 							SaveKey = true,
-							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"]
+							GrabKeyFromSite = false,
+							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"],
+
 						}
 					})			
 
@@ -158,6 +170,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						* Sliders Has Been Fixed,
 						* Tabs Has Been Fixed
 						* Bug Fixes And Enhancements.
+					]]
+					})
+
+					local Update_6 = Updates_Tab:CreateParagraph({
+						Title = "Update 6",
+						Content = [[
+						* Improved Tabs UI,
+						* KeySystem Is Now More Secure,
+						* Tabs Has Been Fixed,
+						* Others Bug Fixes And Enhancements.
 					]]
 					})
 
@@ -527,9 +549,15 @@ local LoadProtonSolar_Function = function(Game_ID)
 
 						--- {Save Settings}>
 						ConfigurationSaving = {
+							Enabled = true,
 							FolderName = "ProtonSolar_Config",
 							FileName = "Saved_Datas",
-							Enabled = false
+						},
+
+						Discord = {
+							Enabled = true,
+							Invite = "emf5EjQTHy",
+							RememberJoins = true
 						},
 
 						--- {KeySystem Settings}>
@@ -537,8 +565,11 @@ local LoadProtonSolar_Function = function(Game_ID)
 							Title = "ProtonSolar [V".. Tables["ProtonSolar_Datas"]["Datas"]["Version"] .."] | Key-System",
 							Subtitle = "Key System",
 							Note = "Join Our Discord: https://discord.gg/RX9yvseGaw",
+							FileName = "ProtoSolar Key",
+							SaveKey = true,
+							GrabKeyFromSite = false,
 							Key = Tables["ProtonSolar_Datas"]["Datas"]["Key"],
-							SaveKey = true
+
 						}
 					})
 
@@ -608,6 +639,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						* Sliders Has Been Fixed,
 						* Tabs Has Been Fixed
 						* Bug Fixes And Enhancements.
+					]]
+					})
+
+					local Update_6 = Updates_Tab:CreateParagraph({
+						Title = "Update 6",
+						Content = [[
+						* Improved Tabs UI,
+						* KeySystem Is Now More Secure,
+						* Tabs Has Been Fixed,
+						* Others Bug Fixes And Enhancements.
 					]]
 					})
 
@@ -775,4 +816,3 @@ end
 --- {Call Functions}>
 LoadProtonSolar_Function(game.PlaceId)
 UI_Lib:LoadConfiguration()
-
