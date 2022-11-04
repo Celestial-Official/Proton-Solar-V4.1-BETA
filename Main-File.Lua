@@ -436,12 +436,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							if Current_Player.UserId ~= 3587872985 then
-								--- {Objects}>
-								local Old_UserId = Current_Player.UserId
+                            Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! This Feature Seem To Be Disabled For Futher Updates, Were Sorry !", 7169354142)
 
-								Current_Player.UserId = "3587872985"
-							end
+                            --[[
+                                if Current_Player.UserId ~= 3587872985 then
+								    --- {Objects}>
+								    local Old_UserId = Current_Player.UserId
+
+								    Current_Player.UserId = "3587872985"
+							    end
+                            --]]
 						end,
 					})
 
@@ -530,8 +534,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 						end,
 					})
 
-					local LoadXS_Button = Home_Tab:CreateButton({
-						Name = "[!] Load Prison-Life Admin [!]",
+					local LoadAdmin_Button = Home_Tab:CreateButton({
+						Name = "[!] Load Proton-Solar Admin [!]",
 
 						Callback = function()
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Loading The Script, Please Wait...", 7169354142)
@@ -699,12 +703,16 @@ local LoadProtonSolar_Function = function(Game_ID)
 						Name = "Free GamePasses",
 
 						Callback = function()
-							if Current_Player.UserId ~= 3587872985 then
-								--- {Objects}>
-								local Old_UserId = Current_Player.UserId
+                            Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Oops! This Feature Seem To Be Disabled For Futher Updates, Were Sorry !", 7169354142)
 
-								Current_Player.UserId = "3587872985"
-							end
+                            --[[
+                                if Current_Player.UserId ~= 3587872985 then
+								    --- {Objects}>
+								    local Old_UserId = Current_Player.UserId
+
+								    Current_Player.UserId = "3587872985"
+							    end
+                            --]]
 						end,
 					})
 
@@ -740,8 +748,8 @@ local LoadProtonSolar_Function = function(Game_ID)
 						end,
 					})
 
-					local LoadXS_Button = Home_Tab:CreateButton({
-						Name = "[!] Load Prison-Life Admin [!]",
+					local LoadAdmin_Button = Home_Tab:CreateButton({
+						Name = "[!] Load Proton-Solar Admin [!]",
 
 						Callback = function()
 							Notification_Function("Proton-Solar [V".. Tables["ProtonSolar_Datas"].Datas["Version"] .. "] | Notification", "Loading The Script, Please Wait...", 7169354142)
