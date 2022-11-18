@@ -7,6 +7,7 @@ local RbxAnalytics_Service = game:GetService("RbxAnalyticsService");
 local Run_Service = game:GetService("RunService");
 local Http_Service = game:GetService("HttpService");
 local Teleport_Service = game:GetService("TeleportService");
+local VirtualUser_Service = game:GetService("VirtualUser");
 
 --- {Variables}>
 getgenv().SecureMode = true
@@ -48,7 +49,8 @@ local Tables = {
 
 	["Supported_GameIds"] = {
 		155615604,
-		369152986
+		369152986,
+		1554960397
 	}
 }
 
@@ -70,13 +72,14 @@ local LoadProtoSmasher_Function = function(Game_ID)
 						FileName = "SavedDatas"
 					},
 
+					--- {Discord Auto-Join Settings}
 					Discord = {
 						Enabled = false,
 						Invite = "No Invite",
-						RememberJoins = true
+						RememberJoins = false
 					},
 
-					---> {Key System}>
+					---> {Key Settings}>
 					KeySystem = true,
 
 					KeySettings = {
@@ -486,7 +489,7 @@ local LoadProtoSmasher_Function = function(Game_ID)
 										Name = "Copy Discord!",
 
 										Callback = function()
-											setclipboard("Lanna#1660")
+											setclipboard("Lxnna#5897")
 										end
 									},
 								},
@@ -639,6 +642,31 @@ local LoadProtoSmasher_Function = function(Game_ID)
 									},
 								},
 							})
+						end
+					end,
+				})
+
+				local AntiAFK_Toggle = Client_Tab:CreateToggle({
+					Name = "Anti AFK";
+					CurrentValue = false,
+					Flag = "AntiAFK_Toggle",
+					Save = true,
+
+					Callback = function(Value)
+						if Value then
+							while Value do
+								--- {Functions}>
+								local PlayerIsAFK_Function = function()
+									--- {Objects}>
+									VirtualUser_Service:CaptureController()
+									VirtualUser_Service:ClickButton2(Vector2.new())
+								end
+
+								--- {Call Functions}>
+								Current_User.Idled:Connect(PlayerIsAFK_Function)
+							end
+						else
+
 						end
 					end,
 				})
